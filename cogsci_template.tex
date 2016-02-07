@@ -55,6 +55,26 @@ semicolon; between each term
 \end{abstract}
 
 \section{Introduction}
+The P300 is a prominent event-related brain potential (ERP) which is relatively easy and reliable to evoke and thus highly interesting in brain computer interface research.
+It was first described by \citeA{Sutton_1965} as a positive-going component with a peak amplitude around 300~ms after the eliciting stimulus onset.
+These stimuli most commonly occur in an oddball paradigm where the subject is instructed to respond (mentally or physically) to a rare target event in a sequence of frequent non-target events.
+The P300, also called late positive component (LPC), is seen to reflect information-processing activity instead of primary sensory activity and is thus less dependent on stimulus modality \cite{Wolpaw_2012}.
+Such amodal ERPs are referred to as endogenous components.
+Several studies propose that endogenous components like the P300 occur independent of modality if the role of the eliciting stimulus stays the same \cite{Chang_2013,Ji_1999,Sangal_1996,Polich_2007}.
+Some results even suggest a comparably similar shape, topography and timing of the ERP if relevant stimulus features (discriminability, timings, probability) are kept same.
+
+The majority of brain computer interfaces (BCI) developed in recent decades rely on unimodal approaches \cite{Wolpaw_2012}.
+However the users' special needs and the idea of a user-centered BCI can necessitate a multi-modal design.
+There are different case studies requesting a BCI design which easily allows the change of modality if for example paradigms of one specific modality cannot be controlled by the user \cite{Schreuder_2013, Kaufmann_2013}.
+As up to present most BCIs rely on supervised learning \cite{Wolpaw_2012} a calibration of the system is needed to produce reliable output.
+To achieve a minimum of usability recalibration times after modality changes must be kept short and thus a transfer of the calibrated system to another modality would be demandable. 
+We evaluated the transfer 
+
+
+Although the P300 typically peaks around 300~ms after stimulus onset the latency is highly dependent on the experimental design.
+The less distinctive the target stimulus is for example the longer the time to detect and evaluate it and thus the longer the latency is \cite{Polich_2007}.
+ 
+Later evaluations, however, suggested the latency to be highly dependent on the experimental design and may vary from 250 to 750 ms \cite{Wolpaw_2012}.
 
 \section{Methods}
 
