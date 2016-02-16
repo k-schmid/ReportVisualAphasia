@@ -55,47 +55,70 @@ semicolon; between each term
 \end{abstract}
 
 \section{Introduction}
-The P300 is a prominent event-related brain potential (ERP) which is relatively easy and reliable to evoke and thus highly interesting in brain computer interface research.
+One known way of how communication in the brain takes place is by means of electric potentials.
+The resulting electrical activity can be measured at the scalp surface and monitored with the Electroencephalography (EEG).
+There are electrical potential that are related to specific internal or external events (e.g. stimuli, responses, decisions) which are called Event-Related Potentials (ERP) \cite{Luck_2014}.
+
+A prominent example of such an ERP is the so called P300.
+The P300 is elicited by an external stimulus and can be relatively easy and reliable reproduced by a specific way of stimulation. TODO % and thus highly interesting in brain computer interface research.
 It was first described by \citeA{Sutton_1965} as a positive-going component with a peak amplitude around 300~ms after the eliciting stimulus onset.
-These stimuli most commonly occur in an oddball paradigm where the subject is instructed to respond (mentally or physically) to a rare target event in a sequence of frequent non-target events.
-The P300, also called late positive component (LPC), is seen to reflect information-processing activity instead of primary sensory activity and is thus less dependent on stimulus modality \cite{Wolpaw_2012}.
-Such amodal ERPs are referred to as endogenous components.
+It is most commonly evoked in a so called oddball paradigm where the subject is instructed to respond (mentally or physically) to a rare target event in a sequence of frequent non-target events.
+For instance two tones with different pitch are presented, a rarely occurring low-pitched and a frequently occurring high-pitched note.
+Every time the rare stimulus is presented a P300 is evoked in the subject's brain and can be monitored with the EEG.
+The P300, also called late positive component (LPC), is seen to reflect information-processing activity concerned with the discrimination task \cite{Wolpaw_2012}.
+In contrast to this ERP component there are components reflecting primary sensory activity like the process of integrating perceived sound patterns.
+These two different component classes are referred to as endogenous and exogenous components respectively.
+
 Several studies propose that endogenous components like the P300 occur independent of modality if the role of the eliciting stimulus stays the same \cite{Chang_2013,Ji_1999,Sangal_1996,Polich_2007}.
-Some results even suggest a comparably similar shape, topography and timing of the ERP if relevant stimulus features (discriminability, timings, probability) are kept same.
+For example instead of varying tones there could be a white and a grey circle displayed on a black monitor screen.
+If the white circle is presented in the same low frequent manner as the low-pitched tone and the grey circle in the same high frequent manner as the high-pitched tone the role of the white circle and the high-pitched tone are the same.
+Thus the occurrence of the white circle elicits as well a P300.
+Some results even suggest a comparably similar shape, topography and timing of the P300 if relevant stimulus features (discriminability, timings, probability) are kept same.
 
-The majority of brain computer interfaces (BCI) developed in recent decades rely on unimodal approaches \cite{Wolpaw_2012}.
+Brain computer interfaces (BCI) are devices which decode the mental state of a subject.
+A common class of BCIs affects the mental state of the user by appropriate stimulation and dependent on the users focus of attention.
+Afterwards the BCI decodes the brain signals based on ERPs elicited by the stimulation.
+One prominent class of BCI applications are P300 matrix spellers \cite<e.g.>{Farwell_1988}, in which users can select a letter of a shown alphabet.
+These devices can help severely disabled people to gain a non-muscular communication channel.
+Comparable to the above described oddball paradigm the alphabet is split into target and non-target letters.
+The target letter is the one the user want to select, the remainder are the non-target letters.
+For selection, all the letters are highlighted multiple times either individually or combined to subsets with elaborated systematics.
+Every time the target letter is highlighted a P300 is elicited and the BCI can decode the brain signals into the focused letters.
+
+As up to the present most BCIs rely on supervised learning \cite{Wolpaw_2012} a calibration of the system is needed to produce reliable output.
+Therefor the user has to create example brain signals where the underlying class labels are known.
+In the case of the matrix speller as an example, the user could select a sequence of predefined letters.
+Since in this scenario the labels of the underlying stimulation for all brain responses are know (i.e. target and non-target letter) it can be used as calibration data.
+This calibration dataset is then used by the classifier to figure out the discriminant features in the brain signals between responses to target and non-target letter stimulation.
+
+The majority of brain computer interfaces developed in recent decades rely on unimodal approaches \cite{Wolpaw_2012}, which means stimulation is done with only one modality (e.g. visual,auditory etc.).
 However the users' special needs and the idea of a user-centered BCI can necessitate a multi-modal design.
-There are different case studies requesting a BCI design which easily allows the change of modality if for example paradigms of one specific modality cannot be controlled by the user \cite{Schreuder_2013, Kaufmann_2013}.
-As up to present most BCIs rely on supervised learning \cite{Wolpaw_2012} a calibration of the system is needed to produce reliable output.
-To achieve a minimum of usability recalibration times after modality changes must be kept short and thus a transfer of the calibrated system to another modality would be demandable. 
-We evaluated the transfer 
+There are different case studies showing that some users cannot control BCIs of one modality but of another \cite{Schreuder_2013, Kaufmann_2013}.
+For that reason it would be helpful having a BCI design which easily allows the change of modality.
+To achieve the best level of usability, recalibration times after modality changes should be kept short and thus a transfer of the calibrated system to another modality would be demandable. 
 
+We evaluated the possibilities of transfer learning between two paradigms of different modalities.
+These were inspired by the well elaborated (1) auditory AMUSE paradigm \cite{Schreuder_2010, Schreuder_2011} and (2) visual Photobrowser paradigm \cite{Tangermann_2011,Quek_2012} respectively.
+
+The paper is organized as following: first a fundamental overview of the P300 ERP is sketched.
+Second the paradigms are described in detail and methods are explained.
+In section three results from five subjects are presented and finally in the last section the results are summed up and integrated in a wider context.
+
+\subsection{The P300 - Characteristics and Determinants}
+Since the P300 was reported the first time half a century ago many effort has been made to gain deeper insights to the underlying mechanisms.
+One of the most widespread explanations is the context-updating hypothesis \cite{Donchin_1988,Polich_2007}.
 
 Although the P300 typically peaks around 300~ms after stimulus onset the latency is highly dependent on the experimental design.
 The less distinctive the target stimulus is for example the longer the time to detect and evaluate it and thus the longer the latency is \cite{Polich_2007}.
- 
-Later evaluations, however, suggested the latency to be highly dependent on the experimental design and may vary from 250 to 750 ms \cite{Wolpaw_2012}.
 
+
+\subsection{BCIs - Opening the black box}
 \section{Methods}
+Subjects were seated in front of computer monitor (size xx'', distance 80\ cm) and were surrounded by a ring of six speakers equally distributed around the participant (distance 60 cm, AMUSE paradigm \cite{Schreuder_2010}). TODO CHECK 
 
-\subsection{Subjects}
-One pilot session was performed of which the data was used to fine-tune experimental parameters but was excluded from further analysis.
-Five healthy adult students (two male, three female, mean age xx, SD $\pm$ xx, range xx-26, advanced level of German) participated in the study.
-All participants had normal or corrected to normal vision.
-
-\subsection{Experimental Setup}
-Subjects were seated in front of computer monitor (size xx'', distance 80\ cm) and were surrounded by a ring of six speakers equally distributed around the participant (distance 60 cm, AMUSE paradigm \cite{Schreuder_2010}). TODO CHECK
-The stimuli were presented either visually on the monitor or auditory by means of the speakers.
- 
-\subsubsection{Data acquisition}
-The EEG was recorded using an electrode cap with 63 passive Ag/AgCl electrodes (EasyCap GmbH).
-Signals were amplified using a BrainAmp Amplifier (Brainproducts GmbH), sampled at 1 kHz and band-filtered between xx. TODO: CHECK
-The electrodes were placed according to the 10-20-system, referenced against the nose and grounded with a forehead electrode.
-EOG was recorded with an additional channel below the right eye.
-The impedances were kept below 10 k$\Omega$.
-
-\subsubsection{Stimuli}
+\subsection{Stimuli}
 The stimuli consist of six sentence-word pairs which were learned by the subjects during a familiarization phase:
+\\
 
 \begin{tabular}[t]{ll}
 Die Tonerkartusche steckt schon im 	& ... Drucker.\\
@@ -107,17 +130,33 @@ Sachbearbeiterin einen amtlichen	& ... Stempel.\\
 Zum Nachf\"ullen des Motor\"ols nimmt\\
 man am besten einen & ... Trichter.\\
 \end{tabular}
+\\
 
 At the beginning of each experimental trial one of the six sentences was presented from one loudspeaker.
 The last word was missing indicating the target word.
+The other five words thus were pooled as the non-target words.
+In the following trial all of the six end-of-sentence words were presented, either visually or auditory, multiple times.
 Subjects were instructed to focus their attention on the target word presentation in the following trial.
 
-\subsubsection{Experimental Structure}
-The Experiment was split into three blocks.
-Each block contained six runs, with alternating modality (visual vs. auditory), meaning the target and non-target words were presented via the screen or the loudspeakers respectively.
-In each run every end-of-sentence word was target once leading to six trials per run.
-A trial consists of 15 presentation of each word thus 90 stimuli were presented per trial (15 target 75 non-target).
-Stimulus onset asynchrony (SOA) was kept at 250 ms.
+\subsection{Description of BCI paradigms}
+Two different paradigms were used in the experiment.
+First, an auditory ERP based paradigm was applied where stimuli were presented from spatially distributed sound sources.
+The second one was a visual ERP based paradigm were stimuli were presented spatially distributed in a grid of images displayed on a computer monitor. 
+In both paradigms external stimulations in the respective modalities elicit brain responses, the so called event-related potentials (ERP).
+The ERPs differ depending whether the stimulus is attended or not attended.
+As the subjects were told to focus only the target words only stimulations of these words were attended.
+
+
+\subsubsection{Visual Paradigm}
+The visual paradigm was inspired by the Photobrowser, designed and evaluated by \citeA{Tangermann_2011} and \citeA{Quek_2012}. 
+They used a 6 x 6 matrix of images as stimuli.
+Each of these images corresponds to either a photo or a command (e.g. select, delete or move). 
+By shifting the focus of attention to one of the images the user could select this image or action via a BCI setup.
+All images were then highlighted and the focused one could be detected.
+\citeA{Tangermann_2011} evaluated different stimulation modes and achieved the best classification results for a combination of brightness enhancement, rotation, enlargement and a trichromatic grid overlay.
+The present visual paradigm was implemented in python as a Pyff application \cite<see>{Venthur_2010}.
+
+
 
 In visual runs the target sentence was cued always from the same loudspeaker (left frontal).
 Afterwards the six end-of-sentence words were presented on the screen as images in a 2 x 3 matrix (see Figure \ref{fig:visual_stimuli}).
@@ -130,9 +169,29 @@ After a short target image detection pause of 4 seconds the stimulation started.
 Therefor images were highlighted individually by brightness enhancement, rotation, enlargement and a trichromatic grid overlay which was suggested to produce a strong visual ERP by \citeA{Tangermann_2011}.
 The stimulus duration was 250 ms, thus stimulations took place with zero inter-stimulus intervals.
 
+\subsubsection{Auditory Paradigm}
 In auditory runs there was a one-to-one mapping between speakers and words.
 Sentences were presented from the same speaker as the target word indicating the direction of the current trial which was as well cued by a screen animation.
 Stimulus duration of the six words was 300 ms hence stimuli slightly overlapped by 50 ms.
+
+\subsection{Subjects}
+One pilot session was performed of which the data was used to fine-tune experimental parameters but was excluded from further analysis.
+Five healthy adult students (two male, three female, mean age xx, SD $\pm$ xx, range xx-26, advanced level of German) participated in the study.
+All participants had normal or corrected to normal vision.
+
+\subsection{Experimental Structure}
+The Experiment was split into three blocks.
+Each block contained six runs, with alternating modality (visual vs. auditory), meaning the target and non-target words were presented via the screen or the loudspeakers respectively.
+In each run every end-of-sentence word was target once, thus leading to six trials per run.
+A trial consists of 15 presentation of each of six different stimuli thus 90 stimuli were presented per trial (15 target 75 non-target).
+Stimulus onset asynchrony (SOA) was kept at 250 ms.
+
+\subsection{Data acquisition}
+The EEG was recorded using an electrode cap with 63 passive Ag/AgCl electrodes (EasyCap GmbH).
+Signals were amplified using a BrainAmp Amplifier (Brainproducts GmbH), sampled at 1 kHz and band-filtered between xx. TODO: CHECK
+The electrodes were placed according to the 10-20-system, referenced against the nose and grounded with a forehead electrode.
+EOG was recorded with an additional channel below the right eye.
+The impedances were kept below 10 k$\Omega$.
 
 
 \bibliographystyle{apacite}
